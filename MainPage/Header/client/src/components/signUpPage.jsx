@@ -18,32 +18,32 @@ class SignUpForm extends Component {
    super(props)
    console.log("im her")
  }
-  handleSignUp(e) {
-    e.preventDefault()
-    let username = this.refs.username.value
-    let email = this.refs.email.value
-    let password = this.refs.password.value
-    //this.props.onSignUp(username, email, password)
-    $.ajax({
-      type: "POST",
-      url: "/register",
-      data:{
-          email: email,
-          password:password,
-          username:username
-      }, 
-      datatype: "json",
-      success:function(){
-          console.log("sucess register the user");
-          alert("welcome ya  "+username);
-          
-      },
-      error: function(request, status, error) {
-            console.log("error in email or password");
-            alert("you should enter valid email or password")
-          }
-      });
-    }
+ handleSignUp(e) {
+  e.preventDefault()
+  let username = this.refs.username.value
+  let email = this.refs.email.value
+  let password = this.refs.password.value
+  //this.props.onSignUp(username, email, password)
+  $.ajax({
+    type: "POST",
+    url: "/register",
+    data:{
+        email: email,
+        password:password,
+        username:username
+    }, 
+    datatype: "json",
+    success:function(){
+        console.log("sucess register the user");
+        alert("welcome ya  "+username);
+        
+    },
+    error: function(request, status, error) {
+          console.log("error in email or password");
+          alert("you should enter valid email or password")
+        }
+    });
+  }
 
   render() {
     return (
