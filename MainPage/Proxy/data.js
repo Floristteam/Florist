@@ -39,8 +39,8 @@ let save = (flower) => {
 }
 
 const UserSchema = Schema({ //a schema for the authentication purpose
-  username: {type: String, unique: true},
-  email: {type: String, unique: true},
+  username: {type: String},
+  email: {type: String},
   password: {type: String},
   // token: {type: String}
 })
