@@ -20,6 +20,7 @@ class LoginForm extends Component {
     e.preventDefault()
     let email = this.refs.email.value
     let password = this.refs.password.value
+    ///
     //this.props.onSignUp(username, email, password)
     $.ajax({
       type: "POST",
@@ -45,7 +46,6 @@ class LoginForm extends Component {
     return (
           
       <div className="form">
-    
       <form onSubmit={this.handleSignIn.bind(this)}>
         <h3>Sign in</h3>
         <input type="text" ref="email" placeholder="enter you email" />
