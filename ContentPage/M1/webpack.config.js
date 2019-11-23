@@ -1,32 +1,24 @@
+var path = require('path');
+var SRC_DIR = path.join(__dirname, './client/src');
+var DIST_DIR = path.join(__dirname, './client/dist');
 
-var webpack = require("webpack");
-var path = require("path");
-
-// Build directory is where the bundle file will be placed
-var BUILD_DIR = path.resolve(__dirname, "client/dist");
-// App directory is where all of your raw JSX files will be placed
-var APP_DIR = path.resolve(__dirname, "client/src");
-
-var config = {
-  entry: APP_DIR + "/index.jsx",
+module.exports =[
+  { 
+  mode: 'development',
+  entry: `${SRC_DIR}/index.jsx`,
+  output: {
+    filename: 'bundle.js',
+    path: DIST_DIR
+  },
   module: {
-    loaders: [
+    rules : [
       {
-        test: /\.jsx?/,
-        include: APP_DIR,
-        loader: "babel",
+        test : /\.jsx?/, 
+        include : SRC_DIR, 
+        loader : 'babel-loader',      
         query: {
-          presets: ["es2015", "react"]
+          presets: ["@babel/preset-env", "@babel/preset-react"]
         }
       }
     ]
-  },
-  output: {
-    path: BUILD_DIR,
-    filename: "bundle.js",
-    
-  }
-};
-
-module.exports = config;
-//******** */
+  }}];

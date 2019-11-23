@@ -32,7 +32,7 @@ class LoginForm extends Component {
       success:function(){
           console.log("sucess login the user");
           alert("Hello "+email);
-         // localStorage.setItem('usertoken', res.data.token)
+       // localStorage.setItem('usertoken', res.data.token)
       },
       error: function(request, status, error) {
             console.log("error in email or password");
