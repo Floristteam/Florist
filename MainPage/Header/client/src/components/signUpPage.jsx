@@ -18,18 +18,37 @@ class SignUpForm extends Component {
    super(props)
    console.log("im her")
  }
-  handleSignUp(e) {
-    e.preventDefault()
-    let username = this.refs.username.value
-    let email = this.refs.email.value
-    let password = this.refs.password.value
-    this.props.onSignUp(username, email, password)
+ handleSignUp(e) {
+  e.preventDefault()
+  let username = this.refs.username.value
+  let email = this.refs.email.value
+  let password = this.refs.password.value
+  //this.props.onSignUp(username, email, password)
+  $.ajax({
+    type: "POST",
+    url: "/register",
+    data:{
+        email: email,
+        password:password,
+        username:username
+    }, 
+    datatype: "json",
+    success:function(){
+        console.log("sucess register the user");
+        alert("welcome ya  "+username);
+        
+    },
+    error: function(request, status, error) {
+          console.log("error in email or password");
+          alert("you should enter valid email or password")
+        }
+    });
   }
-  
+
   render() {
     return (
       
-      <div className="form">     
+      <div className="form" onSubmit={this.handleSignUp.bind(this)}>     
       <form onSubmit={this.handleSignUp.bind(this)}>
         <h3>Create New Account</h3>
         <input type="text" ref="username" placeholder="enter you username" />
@@ -44,13 +63,13 @@ class SignUpForm extends Component {
         <br></br>
         <br></br>
         <p>Your password should be:</p>
-        <li>must be at least 6 characters</li>
+        <li>must be at least 5 characters</li>
         <li>should contain at least one upper case letter [A-Z] and one numeric character [0-9]</li>
 
         <br></br>
         <br></br>
 
-        <input type="submit" value="SignUp" />
+        <input type="submit"/>
 
         <h3>_____________________</h3>
         <br></br>

@@ -16,23 +16,39 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
   }
-  
- 
   handleSignIn(e) {
     e.preventDefault()
-    let username = this.refs.username.value
+    let email = this.refs.email.value
     let password = this.refs.password.value
-    this.props.onSignIn(username, password)
-  }
-  
+    ///
+    //this.props.onSignUp(username, email, password)
+    $.ajax({
+      type: "POST",
+      url: "/login",
+      data:{
+          email: email,
+          password:password
+      }, 
+      datatype: "json",
+      success:function(){
+          console.log("sucess login the user");
+          alert("Hello "+email);
+       // localStorage.setItem('usertoken', res.data.token)
+      },
+      error: function(request, status, error) {
+            console.log("error in email or password");
+            alert("Error in email or password")
+          }
+      });
+    }
+
   render() {
     return (
           
       <div className="form">
-    
       <form onSubmit={this.handleSignIn.bind(this)}>
         <h3>Sign in</h3>
-        <input type="text" ref="username" placeholder="enter you username" />
+        <input type="text" ref="email" placeholder="enter you email" />
         <br></br>
         <br></br>
         <br></br>
@@ -41,7 +57,7 @@ class LoginForm extends Component {
         <br></br>
         <br></br>
         <br></br>
-        <input type="submit" value="Login" />
+        <input type="submit" />
 
         <br></br>
         <br></br>
@@ -110,7 +126,6 @@ class App extends React.Component {
         }
       </div>
     )
-    
   }
   
 };
