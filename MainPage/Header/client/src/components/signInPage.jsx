@@ -27,22 +27,23 @@ class LoginForm extends Component {
       data:{
           email: email,
           password:password
-         
       }, 
       datatype: "json",
       success:function(){
           console.log("sucess login the user");
-          localStorage.setItem('usertoken', res.data.token)
+          alert("Hello "+email);
+         // localStorage.setItem('usertoken', res.data.token)
       },
       error: function(request, status, error) {
-            console.log("error post");
+            console.log("error in email or password");
+            alert("Error in email or password")
           }
       });
     }
 
   render() {
     return (
-          
+          
       <div className="form">
     
       <form onSubmit={this.handleSignIn.bind(this)}>
@@ -69,14 +70,15 @@ class LoginForm extends Component {
          <Link to={'/SignUpForm'}>
            <button role="Link">Sign Up</button>
          </Link>
-            {/* <button >
-            <a href="/SignUpForm">SignUp</a>
-          </button> */}
+         <br/>
+         <br/>
+
+
        
        </div>
        </form>
        </div>
-             
+             
 
     )
   }

@@ -4,7 +4,6 @@ import $ from 'jquery';
 import CardItem from './components/CardItem.jsx';
 import CardList from './components/CardList.jsx';
 
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -49,11 +48,12 @@ class App extends Component {
 
 
     render() {
-        return(
-            <div className="rendered-div">
-                {/* <CardItem /> */}
-                <CardList cards={this.state.cards}/>                      
-            </div>
+        return( 
+
+                <div className="rendered-div">
+                    < CardList cards={this.state.cards}/>                      
+                </div>
+
         )
     }
 
