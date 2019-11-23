@@ -4,7 +4,7 @@
   "description": "",
   "main": "data.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "react-dev": "webpack -d --watch",
     "serveru": "nodemon server.js"
@@ -27,10 +27,15 @@
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.9.0",
     "jquery": "^3.4.1",
     "nodemon": "^1.19.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "superagent": "^5.1.1",
+    "supertest": "^4.0.2",
     "webpack": "^1.15.0",
     "webpack-cli": "^3.3.10"
   }

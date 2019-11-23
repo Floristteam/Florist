@@ -4,7 +4,7 @@
   "description": "sinior project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "serverm2": "nodemon server.js",
     "dev-react": "webpack -d --watch"
@@ -23,10 +23,15 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-loader": "^6.2.5",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.11.0",
+    "superagent": "^5.1.1",
+    "supertest": "^4.0.2",
     "webpack": "^1.15.0",
     "webpack-dev-server": "^3.9.0"
   }
