@@ -27,7 +27,7 @@ describe('Testing the /cards path', () => {
     });
     //Check if the data fetched is correct
     test('Flower fetched should be Autumn Blush', async () => {
-        const response = await request(app).get('/?id=5dd407e51c9d440000311aec');
+        const response = await request(app).get('/cards/?id=5dd3f4dd1c9d440000311ae9');
         expect(response.body[0].name).toBe('Autumn Blush');
     });
 })
