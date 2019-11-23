@@ -18,10 +18,10 @@ app.get("/items", (req, res) => {
 });
 
 app.get("/id", function(req, res) {
-  var n = req.query._id;
+  var n = req.query.id;
   console.log(n);
 
-  db.Flower.findOne({ id: n }, (err, data) => {
+  db.Flower.findOne({ _id: n }, (err, data) => {
     if (err) {
       console.log("error", err);
     }

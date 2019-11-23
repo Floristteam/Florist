@@ -57,14 +57,16 @@ let saveuser = (user) => {
   buyer.save();
 }
 
-const ShoppingSchema = Schema ({ //
-  name: {type: String},
-  image:{type: String},
-  name:{type: String},
-  pricetype:{type: String},
-  price: {type: Number},
-  quantity: {type: Number},
-  deliveryDate: {type: Date},
+const ShoppingSchema = Schema ({ 
+  id_user:{type:String},
+  id_flower:{type:String}
+  // name: {type: String},
+  // image:{type: String},
+  // name:{type: String},
+  // pricetype:{type: String},
+  // price: {type: Number},
+  // quantity: {type: Number},
+  // deliveryDate: {type: Date},
 })
 
 const ShoppingCart = mongoose.model('ShoppingCart', ShoppingSchema);

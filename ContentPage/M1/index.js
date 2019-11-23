@@ -5,40 +5,40 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static("client/dist"));
-app.use(bodyParser.urlencoded({ extended: false })); 
-app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get ('/', (req, res) => {
-  res.send('Hello from module one');
+app.get("/", (req, res) => {
+  res.send("Hello from module one");
 });
 
 var db = require("./data.js");
 
-app.get('/flower', function (req, res) {
-  db.Flower.find({})
-  .exec((err,data) => { 
-    if(err){
+app.get("/flower", function(req, res) {
+  db.Flower.find({}).exec((err, data) => {
+    if (err) {
       console.log(err);
-      req.send()
-   }
-   res.json(data);
-  })  
-})
- 
-  
-   app.get('/id', function (req, res) {
-     var n = req.query._id;
-     console.log(n);
+      req.send();
+    }
+    res.json(data);
+  });
+});
 
-     db.Flower.findOne({ id:n },(err,data) => {
-      if(err){
-        console.log("error",err);
-      }
-      console.log(data);
-      res.status(200).send(data);
-    })
-     });
+app.get("/id", function(req, res) {
+  var n = req.query.id;
+  console.log(n);
 
-  const port = process.env.PORT || 4001;
-  app.listen(port, function() {console.log('listening on port 4001!'); });
-  //
+  db.Flower.findOne({ _id: n }, (err, data) => {
+    if (err) {
+      console.log("error", err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  });
+});
+
+const port = process.env.PORT || 4001;
+app.listen(port, function() {
+  console.log("listening on port 4001!");
+});
+//

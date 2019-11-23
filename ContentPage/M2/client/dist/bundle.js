@@ -48,7 +48,7 @@ this["require"] =
   \******************************/
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -67,18 +67,28 @@ this["require"] =
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.state = {
-	      id: "",
-	      name: "",
-	      price1: "",
-	      price2: "",
-	      price3: ""
+	      id: '',
+	      name: '',
+	      price1: '',
+	      price2: '',
+	      price3: ''
 	      // productName: '',
 	    };
+	
+	    // this.getInfo = this.getInfo.bind(this);
+	    // this.updateState = this.updateState.bind(this);
 	    return _this;
 	  }
+	  // updateState(data) {
+	  //   this.setState({
+	  //     dataItem: data
+	  //   });
+	
+	  // }
+	
 	
 	  _createClass(App, [{
-	    key: "componentDidMount",
+	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var that = this;
 	      // this.getInfo();
@@ -96,9 +106,10 @@ this["require"] =
 	          that.setState({
 	            id: data.id,
 	            name: data.name,
-	            price1: data.price1,
-	            price2: data.price2,
-	            price3: data.price3
+	            price1: data.dprice,
+	            price2: data.pprice,
+	            price3: data.sprice
+	
 	          });
 	          console.log(that.state);
 	        },
@@ -111,15 +122,16 @@ this["require"] =
 	    // getInfo() {
 	    // var that = this;
 	
+	
 	    // }
 	
 	  }, {
-	    key: "changeType",
+	    key: 'changeType',
 	    value: function changeType(e) {
 	      e.target.type = "date";
 	    }
 	  }, {
-	    key: "changeingone",
+	    key: 'changeingone',
 	    value: function changeingone(e) {
 	      console.log(this.state.name);
 	
@@ -128,163 +140,106 @@ this["require"] =
 	      $("#h4").text("$" + this.state.price1);
 	    }
 	  }, {
-	    key: "changeingtwo",
+	    key: 'changeingtwo',
 	    value: function changeingtwo() {
 	      $("#descrip").text("Additional flowers will be added to enhance the bouquet.");
 	      $("#h4").text("$" + this.state.price2);
 	    }
 	  }, {
-	    key: "changeingthree",
+	    key: 'changeingthree',
 	    value: function changeingthree() {
 	      $("#h4").text("$" + this.state.price3);
 	      $("#descrip").text("We will add more blooms and select the highest quality flowers we offer in this style.");
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	
 	      // if(this.state. !==  0){
 	      //  var  myData =this.state;
 	      // }
 	      return React.createElement(
-	        "div",
+	        'div',
 	        null,
 	        React.createElement(
-	          "div",
-	          { className: " up float  order-container col-xs-12 col-sm-6 col-md-6" },
+	          'div',
+	          { className: ' up float  order-container col-xs-12 col-sm-6 col-md-6' },
 	          React.createElement(
-	            "div",
-	            { id: "orderForm" },
+	            'div',
+	            { id: 'orderForm' },
 	            React.createElement(
-	              "h1",
-	              { "class": "order-header", name: "name" },
+	              'h1',
+	              { 'class': 'order-header', name: 'name' },
 	              this.state.name
 	            ),
-	            React.createElement("br", null),
+	            React.createElement('br', null),
 	            React.createElement(
-	              "div",
-	              { "class": "orderForm-arrangement_size" },
+	              'div',
+	              { 'class': 'orderForm-arrangement_size' },
 	              React.createElement(
-	                "div",
-	                { className: "text-align paddingBut" },
+	                'div',
+	                { className: 'text-align paddingBut' },
 	                React.createElement(
-	                  "h4",
-	                  { "class": " orderForm-price modification_price js-price" },
-	                  "$",
+	                  'h4',
+	                  { 'class': ' orderForm-price modification_price js-price', id: 'h4' },
+	                  '$',
 	                  this.state.price1
 	                ),
 	                React.createElement(
-	                  "div",
-	                  {
-	                    id: "btnscontin"
-	                    // className=" btn btn-large btn-order-size btn-order-size--standard col-xs-4 col-sm-4 col-md-4 col-lg-4 js-btnOrderSize"
-	                    // class="up-sell-list options-list price-size-box clearfix"
-	                  },
+	                  'div',
+	                  { className: ' btn btn-large btn-order-size btn-order-size--standard col-xs-4 col-sm-4 col-md-4 col-lg-4 js-btnOrderSize', 'class': 'up-sell-list options-list price-size-box clearfix' },
 	                  React.createElement(
-	                    "button",
-	                    {
-	                      className: "btn",
-	                      name: " price1",
-	                      id: "standard",
-	                      onClick: this.changeingone.bind(this)
-	                    },
-	                    "Standard",
-	                    " "
+	                    'button',
+	                    { className: 'btn', name: ' price1', id: 'standard', onClick: this.changeingone.bind(this) },
+	                    'Standard '
 	                  ),
 	                  React.createElement(
-	                    "button",
-	                    {
-	                      className: "btntwo btn",
-	                      name: " price2",
-	                      id: "deluxe",
-	                      onClick: this.changeingtwo.bind(this)
-	                    },
-	                    "Deluxe",
-	                    " "
+	                    'button',
+	                    { className: 'btntwo btn', name: ' price2', id: 'deluxe', onClick: this.changeingtwo.bind(this) },
+	                    'Deluxe   '
 	                  ),
 	                  React.createElement(
-	                    "button",
-	                    {
-	                      className: "btntwo btn",
-	                      name: " price3",
-	                      id: "premium",
-	                      onClick: this.changeingthree.bind(this)
-	                    },
-	                    "Premium"
+	                    'button',
+	                    { className: 'btntwo btn', name: ' price3', id: 'premium', onClick: this.changeingthree.bind(this) },
+	                    'Premium'
 	                  )
 	                )
 	              )
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "devdes" },
+	            'div',
+	            { className: 'devdes' },
 	            React.createElement(
-	              "div",
-	              { id: "i" },
-	              React.createElement(
-	                "div",
-	                { className: "up-sell", id: "descrip" },
-	                React.createElement(
-	                  "div",
-	                  { id: "hea" },
-	                  React.createElement(
-	                    "div",
-	                    null,
-	                    React.createElement("img", {
-	                      className: " pickup-only-icon",
-	                      src: "https://i.ibb.co/SNd267P/hear.png"
-	                    }),
-	                    React.createElement("br", null)
-	                  ),
-	                  React.createElement(
-	                    "div",
-	                    null,
-	                    React.createElement("br", null),
-	                    "Bouquet will be delivered approximately as pictured."
-	                  )
-	                )
-	              )
+	              'div',
+	              { className: 'up-sell', id: 'descrip' },
+	              'Bouquet will be delivered approximately as pictured.'
 	            ),
-	            React.createElement("br", null),
+	            React.createElement('br', null),
 	            React.createElement(
-	              "div",
-	              { className: "up-selll" },
-	              React.createElement("img", {
-	                className: " pickup-only-icon",
-	                src: "https://i.ibb.co/ZcvTWfz/truck.png"
-	              }),
-	              React.createElement("br", null),
-	              React.createElement(
-	                "div",
-	                null,
-	                React.createElement("br", null),
-	                "Add a zip code for delivery details"
-	              )
+	              'div',
+	              { className: 'up-selll' },
+	              'Add a zip code for delivery details'
 	            )
 	          ),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
 	          React.createElement(
-	            "div",
-	            { className: "dates" },
-	            React.createElement("input", {
-	              className: "inputs",
-	              placeholder: "CHOOSE A DELIVERY DATE",
-	              type: "text",
-	              onFocus: this.changeType.bind(this)
-	            })
+	            'div',
+	            { className: 'dates' },
+	            React.createElement('input', { className: 'inputs', placeholder: 'CHOOSE A DELIVERY DATE', type: 'text', onFocus: this.changeType.bind(this) })
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "dates" },
+	            'div',
+	            { className: 'dates' },
 	            React.createElement(
-	              "button",
-	              { className: "colorbtn" },
-	              "Order Now"
+	              'button',
+	              { className: 'colorbtn' },
+	              'Order Now'
 	            )
 	          )
 	        ),
-	        React.createElement("div", null)
+	        React.createElement('div', null)
 	      );
 	    }
 	  }]);
@@ -292,7 +247,7 @@ this["require"] =
 	  return App;
 	}(React.Component);
 	
-	ReactDOM.render(React.createElement(App, null), document.getElementById("Flowers4002"));
+	ReactDOM.render(React.createElement(App, null), document.getElementById('Flowers4002'));
 
 /***/ })
 /******/ ]);

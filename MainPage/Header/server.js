@@ -11,14 +11,33 @@ var bcrypt = require('bcryptjs');
 var config = require('./config');
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json()); 
+var VerifyToken = require('./auth/AuthController.js');
+app.use(express.json());
+const { check, validationResult } = require('express-validator');
+
 
 // user register
-app.post('/register', function(req, res) {
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+app.post('/register',[
+ 
+  
+    check('email').isEmail(),
+    // password must be at least 5 chars long
+    check('password').isLength({ min: 5 })
+    ], (req, res) => {
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+  var email = req.body.email;
+  var username = req.body.username;
+   var password =req.body.password;
+
+    var hashedPassword = bcrypt.hashSync(password, 8);
     console.log(req.body.username);
     User.create({
-      username:req.body.username,
-      email: req.body.email,
+      username:username,
+      email: email,
       password: hashedPassword
     },
     function (err, user) {
@@ -46,37 +65,26 @@ app.post('/register', function(req, res) {
       });
     });
     
-// //     var new_user = User({
-// //       username: req.body.username,
-// //       email: req.body.email,
-// //       password: req.body.password
-// //   })
-// //     new_user.save()
-// //     .then(user => res.json(user))
-// //     .catch(err => console.log(err))
-// // });
-app.get('/me', function(req, res) {
-  var token = req.headers['x-access-token'];
-  if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-  
-  jwt.verify(token, config.secret, function(err, decoded) {
-    if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-    
-    User.findById(decoded.id, 
-      { password: 0 }, // projection
-      function (err, user) {
+    app.get('/me', VerifyToken, function(req, res, next) {
+
+      User.findById(req.userId, { password: 0 }, function (err, user) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!user) return res.status(404).send("No user found.");
         
         res.status(200).send(user);
+      });
+      
     });
-  });
-});  
 
-app.get('/',function(req,res){
-  res.send("hello")
-})
+app.get('/logout', function(req, res) {
+  res.status(200).send({ auth: false, token: null });
+});
 
+app.get("/", (req, res) => {
+  res.json({ status: "success", message: "hello" });
+});
 
 app.listen(process.env.PORT || 1200); 
 console.log('We party on port', 1200);
+
+module.exports = app;
