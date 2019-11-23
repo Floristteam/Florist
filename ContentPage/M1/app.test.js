@@ -1,9 +1,5 @@
 const request = require('supertest');
 const app = require('./app.js');
-// const mongoose = require('mongoose')
-const databaseName = 'floristTest'
-
-
 
 //check root 
 describe('Test the root path', () => {
@@ -15,20 +11,19 @@ describe('Test the root path', () => {
 });
 
 //testing async data
-describe('Testing the /cards path', () => {
+describe('Testing the /flower path', () => {
     test('It should response the GET method', async () => {
-        const response = await request(app).get('/cards');
+        const response = await request(app).get('/flower');
         expect(response.statusCode).toBe(200);
     });
     //check number of retreived flowers
-    test('Should fetch 16 flowers', async () => {
-        const response = await request(app).get('/cards');
-        expect(response.body.length).toBe(16);
+    test('Should fetch 104 flowers', async () => {
+        const response = await request(app).get('/flower');
+        expect(response.body.length).toBe(104);
     });
     //Check if the data fetched is correct
     test('Flower fetched should be Autumn Blush', async () => {
-        const response = await request(app).get('/cards/?id=5dd3f4dd1c9d440000311ae9');
+        const response = await request(app).get('/flower/?id=5dd3f4dd1c9d440000311ae9');
         expect(response.body[0].name).toBe('Autumn Blush');
     });
 })
-
