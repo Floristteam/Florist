@@ -93,7 +93,7 @@ logout(){
                   </Link>
 
                 <Link to={'/SignUpForm'}>
-                  <a role="Link" className="anch" onClick={this.logout}>
+                  <a role="Link" className="anch">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns='xlink="http://www.w3.org/1999/xlink"'
@@ -108,7 +108,7 @@ logout(){
                   </a>
                   </Link>
                  <Link to={'/LoginForm'}>
-                  <a role="Link" className="anch" >
+                  <a role="Link" className="anch"  onClick={this.logout}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns='xlink="http://www.w3.org/1999/xlink"'

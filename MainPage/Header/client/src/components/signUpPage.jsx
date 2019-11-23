@@ -63,7 +63,7 @@ class SignUpForm extends Component {
         <br></br>
         <br></br>
         <p>Your password should be:</p>
-        <li>must be at least 6 characters</li>
+        <li>must be at least 5 characters</li>
         <li>should contain at least one upper case letter [A-Z] and one numeric character [0-9]</li>
 
         <br></br>
