@@ -169,14 +169,6 @@ p {
 .text-align {
   text-align: center;
 }
-.navigation {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
-  z-index: 994;
-}
 
 .nav-itemWrapper {
   font-weight: 200;
@@ -189,7 +181,8 @@ p {
 .displayUl {
   display: inline-block;
   text-align: center;
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  margin-left: 40px;
   letter-spacing: 0 !important;
 }
 
@@ -198,9 +191,8 @@ p {
   display: block;
   /* margin-left: 420; */
   margin-top: 5;
-  max-width: 280px;
-  height: 150px;
-
+  max-width: 260px;
+  height: auto;
 }
 .clearfix {
   display: flex;
@@ -283,7 +275,6 @@ div.ui-menu li {
   font-size: 26px;
   margin-top: 1%;
   font-size: 20px;
-
 }
 .up {
   margin-top: -15%;
@@ -538,4 +529,10 @@ h4 {
   margin-left: 7%;
   margin-top: 5%;
 }
-.header-nav
+#active-image_gallery-image {
+  height: 50%;
+  background: #efefef;
+  width: 35%;
+  margin-left: 7%;
+  margin-top: 5%;
+}

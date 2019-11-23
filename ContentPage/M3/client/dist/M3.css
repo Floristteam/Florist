@@ -1,4 +1,4 @@
-.order-container {
+/* .order-container {
   position: relative;
   min-height: 1px;
   max-width: 580px;
@@ -412,9 +412,7 @@ h4 {
   margin: 5;
   vertical-align: middle;
 }
-.up {
-  /* margin-top: -15px; */
-}
+
 /* here are new css  */
 #pokname {
   margin-top: 5%;
@@ -464,4 +462,4 @@ h4 {
 #btnscont {
   display: inline;
   margin-left: 45%;
-}
+} */

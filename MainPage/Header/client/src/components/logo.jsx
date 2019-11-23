@@ -1,48 +1,60 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import $ from "jquery";
-class Flowers4001 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: "",
-      id:""
-    };
-  }
+import { Link } from "react-router-dom";
 
-  componentDidMount() {
-    var that = this;
-    var path = window.location.href;
-    console.log(path);
-    var imgId = path.substring(path.indexOf("=") + 1);
-    if (imgId === "") {
-      imgId = "5dd407e51c9d440000311aec";
-    }
-    console.log(imgId);
-    $.ajax({
-      type: "GET",
-      url: "/id/?id=" + imgId,
-      success: function(data) {
-        console.log("dvdvdvdv");
-        console.log(data);
-        that.setState({
-          image: data.image,
-          id: data._id
-        });
-      },
-      error: function(request, status, error) {
-        console.log(error, "hi im the error");
-      }
+ 
+
+
+class Logo extends React.Component {
+  constructor(props){
+    super(props);
+    this.logout=this.logout.bind(this);
+
+  }
+//     this.state = {
+//       isLoggedIn:User._id ,
+//     }
+//    }
+//    User.logout((error) =>{
+//     if (error) {
+//       console.log(error.reason);
+//     }else{
+//       this.setState({isLoggedIn: !this.state.isLoggedIn,});
+//       console.log("Logout successful");
+//      }
+//  });
+// }
+
+logout(){
+  //var token = JSON.parse(localStorage.getItem('usertoken'));
+  //console.log(token)
+  $.ajax({
+    type: "get",
+    url: "/logout",
+    data:{
+       
+    }, 
+    datatype: "json",
+    success:function(){
+        console.log("logout");
+        alert("logout");
+       //localStorage.setItem('usertoken', res.data.token)
+
+    },
+    error: function(request, status, error) {
+          console.log("error in logout");
+          alert("error in logout")
+        }
     });
   }
+   
   render() {
     console.log("hiiii");
     return (
-      <div>
+      <div className="forms">
         <section id="#header">
           {/* <div className="row header-innerContainer "> */}
-          <div className=" clearfix company-logo companylogo-img col-xs-12 col-sm-4 col-md-4">
-            <span>
+          <div className=" clearfix company-logo ">
+            <span id="details">
               Park Florist
               <br />
               2015 Macdonald Ave
@@ -62,7 +74,10 @@ class Flowers4001 extends React.Component {
               <span id="dropdown">
                 <button id="dropbtn">My Account </button>
                 <div id="dropdown-content">
-                  <a href="#">
+
+                <Link to={'/LoginForm'}>
+                  <a role="Link" className="anch" >
+
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns='xlink="http://www.w3.org/1999/xlink"'
@@ -75,7 +90,10 @@ class Flowers4001 extends React.Component {
                     </svg>{" "}
                     log in
                   </a>
-                  <a href="#">
+                  </Link>
+
+                <Link to={'/SignUpForm'}>
+                  <a role="Link" className="anch" onClick={this.logout}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns='xlink="http://www.w3.org/1999/xlink"'
@@ -88,7 +106,9 @@ class Flowers4001 extends React.Component {
                     </svg>{" "}
                     sign up
                   </a>
-                  <a href="#">
+                  </Link>
+                 <Link to={'/LoginForm'}>
+                  <a role="Link" className="anch" >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns='xlink="http://www.w3.org/1999/xlink"'
@@ -99,8 +119,9 @@ class Flowers4001 extends React.Component {
                     >
                       <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M9.75,7.82C8.21,7.82 7,9.03 7,10.57C7,12.46 8.7,14 11.28,16.34L12,17L12.72,16.34C15.3,14 17,12.46 17,10.57C17,9.03 15.79,7.82 14.25,7.82C13.38,7.82 12.55,8.23 12,8.87C11.45,8.23 10.62,7.82 9.75,7.82Z" />
                     </svg>{" "}
-                    My Favorites
+                    Log out
                   </a>
+                  </Link>
                 </div>
               </span>
               <span id="carticon">
@@ -155,15 +176,8 @@ class Flowers4001 extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="photo">
-          <img
-            className=" nn"
-            id="active-image_gallery-image"
-            src={this.state.image}
-          />
-        </div>
       </div>
     );
   }
 }
-ReactDOM.render(<Flowers4001 />, document.getElementById("Flowers4001"));
+export default Logo;

@@ -11,7 +11,6 @@ const Welcome = ({user, mainPage})=> {
   )
 }
 
-
 class SignUpForm extends Component {
   
  constructor(props){
@@ -23,32 +22,13 @@ class SignUpForm extends Component {
     let username = this.refs.username.value
     let email = this.refs.email.value
     let password = this.refs.password.value
-    //this.props.onSignUp(username, email, password)
-    $.ajax({
-      type: "POST",
-      url: "/register",
-      data:{
-          email: email,
-          password:password,
-          username:username
-      }, 
-      datatype: "json",
-      success:function(){
-          console.log("sucess register the user");
-          alert("welcome ya  "+username);
-          
-      },
-      error: function(request, status, error) {
-            console.log("error in email or password");
-            alert("you should enter valid email or password")
-          }
-      });
-    }
-
+    this.props.onSignUp(username, email, password)
+  }
+  
   render() {
     return (
       
-      <div className="form" onSubmit={this.handleSignUp.bind(this)}>     
+      <div className="form">     
       <form onSubmit={this.handleSignUp.bind(this)}>
         <h3>Create New Account</h3>
         <input type="text" ref="username" placeholder="enter you username" />
@@ -69,7 +49,7 @@ class SignUpForm extends Component {
         <br></br>
         <br></br>
 
-        <input type="submit"/>
+        <input type="submit" value="SignUp" />
 
         <h3>_____________________</h3>
         <br></br>

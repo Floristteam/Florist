@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/signInPage.jsx";
 import SignUpForm from "./components/signUpPage.jsx";
+import Logo from "./components/logo.jsx";
+
 
 
 
@@ -14,15 +16,11 @@ class Main extends Component {
         return (
 
             <BrowserRouter>
-                {/* <div> */}
-                {/* <Switch> */}
-                        <Route exact path={"/"} component={LoginForm} />
-                            {/* <LoginForm />  */}
+                        <Logo />
+                        <br/>
+                        <Route exact path={"/LoginForm"} component={LoginForm} />
                         <Route path={"/SignUpForm"} component={SignUpForm} /> 
-                            {/* <SignUpForm />     */}
-                        {/* </Switch>  */}
-                    {/* </div>      */}
-                
+                        <br/>
             </BrowserRouter>
             
         )

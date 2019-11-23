@@ -36,9 +36,9 @@ class App extends React.Component {
         that.setState({
           id:data.id,
         name:data.name,
-        price1:data.dprice,
-        price2:data.pprice,
-        price3:data.sprice
+        price1:data.sprice,
+        price2:data.dprice,
+        price3:data.pprice
           
         });
         console.log(that.state)
