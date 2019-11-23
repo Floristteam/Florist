@@ -49,12 +49,26 @@ class App extends React.Component {
       }
     });
   }
-  ///////////
-  // getInfo() {
-    // var that = this;
+    // addToCart(){
+    //   var that =this;
+    //     $.ajax({
+    //       method: "POST",
+    //       url: "/addcart",
+    //       datatype:'json',
+    //       data:{
+    //         id_user:
+    //         id_flower:._id
+    //       },
+    //       success: function() {
+    //         console.log('success');
+    //     },
+    //       error : function(){ console.log('error');}
+    //      })
+    //      this.retreiveData();
+    //   }
     
-    
-  // }
+
+
     changeType(e){
       e.target.type="date";
     }
@@ -74,11 +88,6 @@ class App extends React.Component {
       $("#descrip").text("We will add more blooms and select the highest quality flowers we offer in this style.")
     }
   render () {
-    
-    
-    // if(this.state. !==  0){
-    //  var  myData =this.state;
-    // }
     return (
       <div>
   <div className=" up float  order-container col-xs-12 col-sm-6 col-md-6"> 
@@ -118,7 +127,7 @@ class App extends React.Component {
   </div>
   <div className ="dates">
   
-  <button className="colorbtn" >Order Now</button>
+  <button className="colorbtn">Order Now</button>
   </div >
   
   
